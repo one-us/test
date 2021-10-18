@@ -1,0 +1,60 @@
+import java.util.*;
+public class ParkingSystem {
+	Integer big;
+	Integer medium;
+	Integer small;
+	Integer carType;
+	String str[]=new String[7];
+	ParkingSystem(Integer carType){
+		this.carType=carType;
+	}
+	ParkingSystem(Integer big,Integer medium,Integer small){
+		this.big=big;
+		this.medium=medium;
+		this.small=small;
+	}
+	public boolean addCar(int carType) {
+		if(carType==1) {
+			if(big>0) {
+				big--;
+			return true;
+			}
+		}
+		else if(carType==2) {
+			if(medium>0) {
+				medium--;
+			return true;
+		}
+		}
+		else if(carType==3) {
+			if(small>0) {
+				small--;
+				return true;
+			}
+		}
+			return false;
+	}
+public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		String s;
+		String s1;
+ArrayList<Integer> arr=new ArrayList<Integer>();
+				s1=scan.nextLine();				
+				s=scan.nextLine();
+				StringTokenizer st=new StringTokenizer(s,"[ ,]");
+				while(st.hasMoreTokens())
+				{
+					String a=st.nextToken();
+					int i=Integer.parseInt(a);
+					arr.add(i);
+				}
+				int a=arr.get(0);
+				int b=arr.get(1);
+				int c=arr.get(2);
+				ParkingSystem ps=new ParkingSystem(a,b,c);
+				boolean one=ps.addCar(arr.get(3));
+				boolean two=ps.addCar(arr.get(4));
+				boolean three=ps.addCar(arr.get(5));
+				boolean one1=ps.addCar(arr.get(6));
+				System.out.print("["+"null"+","+one+","+two+","+three+","+one1+"]");
+		}
